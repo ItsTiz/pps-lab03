@@ -8,7 +8,6 @@ import scala.annotation.tailrec
 object Lab03 extends App:
 
   //Task 1 - svolto da solo
-
   import u03.Sequences.Sequence.*
   import u03.Sequences.*
 
@@ -163,7 +162,6 @@ object Lab03 extends App:
     foldLeft(Sequence.map(courses(s))(e => 1))(0)(_ + _)
 
   //Task 3 - svolto da solo
-
   import u03.Streams.Stream
   import u03.Streams.Stream.*
 
