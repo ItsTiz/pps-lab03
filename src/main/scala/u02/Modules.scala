@@ -1,5 +1,8 @@
 package u02
 
+import u03.Optionals.Optional
+import u03.Optionals.Optional.*
+
 object Modules extends App:
 
   // An ADT: type + module
@@ -11,6 +14,9 @@ object Modules extends App:
     def name(p: Person): String = p match
       case Student(n, _) => n
       case Teacher(n, _) => n
+    def course(t: Person): Optional[String] = t match
+      case Teacher(_, course) => Just(course)
+      case _ => Empty()
 
   println(Person.name(Person.Student("mario", 2015)))
 

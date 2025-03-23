@@ -1,4 +1,5 @@
 package u03
+
 import org.junit.*
 import org.junit.Assert.*
 
@@ -6,6 +7,7 @@ import u03.Streams.*
 import Stream.*
 import u03.Sequences.*
 import Sequence.*
+import lab03.Lab03.*
 
 class StreamTest:
 
@@ -27,4 +29,17 @@ class StreamTest:
     val str1 = Stream.iterate(0)(_ + 1) // {0,1,2,3,..}
     val str2 = Stream.takeWhile(str1)(_ < 5) // {0,1,2,3,4}
     assertEquals(Cons(0, Cons(1, Cons(2, Cons(3, Cons(4, Nil()))))), Stream.toList(str2))
+
+  @Test def testFill(): Unit =
+    val str1 = fill(3)("a")
+    assertEquals(Cons("a", Cons("a", Cons("a", Nil()))), Stream.toList(str1))
+
+  @Test def testFibonacci(): Unit =
+    val str1 = Stream.take(fibonacci)(5)
+    assertEquals(Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Nil()))))), Stream.toList(str1))
+
+  @Test def testCycle(): Unit =
+    val str1 = Stream.take(cycle(Cons("a", Cons("b", Cons("c", Nil())))))(5)
+    assertEquals(Cons("a", Cons("b", Cons("c", Cons("a", Cons("b", Nil()))))), Stream.toList(str1))
+
 end StreamTest
